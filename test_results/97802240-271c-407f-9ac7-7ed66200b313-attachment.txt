@@ -1,0 +1,40 @@
+Method POST
+POST URL: https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123
+Odpowiedz na POST: {"status":"OK","place_id":"fdb6c5069a200ca5d4716bf9561e1ba0","scope":"APP","reference":"7d8c95db0fcf20a8db2b380c92c4e5ee7d8c95db0fcf20a8db2b380c92c4e5ee","id":"7d8c95db0fcf20a8db2b380c92c4e5ee"}
+Dobrze! Status kod = 200
+Wszystkie pola są obecne
+status dobrze!
+Method GET POST
+GET URL: https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=fdb6c5069a200ca5d4716bf9561e1ba0
+Ответ от GET API: {"location":{"latitude":"-38.383494","longitude":"33.427362"},"accuracy":"50","name":"Frontline house","phone_number":"(+91) 983 893 3937","address":"29, side layout,cohen 09","types":"shoe park,shop","website":"http:\/\/google.com","language":"French-IN"}
+Dobrze! Status kod = 200
+Dobrze! Status kod = 200
+Wszystkie pola są obecne
+address dobrze!
+Method PUT
+PUT URL: https://rahulshettyacademy.com/maps/api/place/update/json?key=qaclick123
+Ответ на PUT: {"msg":"Address successfully updated"}
+Dobrze! Status kod = 200
+Wszystkie pola są obecne
+msg dobrze!
+Method GET PUT
+GET URL: https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=fdb6c5069a200ca5d4716bf9561e1ba0
+Ответ от GET API: {"location":{"latitude":"-38.383494","longitude":"33.427362"},"accuracy":"50","name":"Frontline house","phone_number":"(+91) 983 893 3937","address":"100 Lenina street, RU","types":"shoe park,shop","website":"http:\/\/google.com","language":"French-IN"}
+Dobrze! Status kod = 200
+Wszystkie pola są obecne
+address dobrze!
+Method DELETE
+DELETE URL: https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123
+Ответ на DELETE: {"status":"OK"}
+Dobrze! Status kod = 200
+Wszystkie pola są obecne
+status dobrze!
+Method GET DELETE
+GET URL: https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=fdb6c5069a200ca5d4716bf9561e1ba0
+Ошибка при запросе GET: 404 - {"msg":"Get operation failed, looks like place_id  doesn't exists"}
+Miesjce usunięto dobrze, otrzymali status 404.
+msg: Get operation failed, looks like place_id doesn't exists
+Usunięcie powiodło się
+Wszystkie pola są obecne
+Słowę failed jest!
+Testowanie tworzenij, zmian i usunięc nowej lokalizacji skończyło się dobrze!
