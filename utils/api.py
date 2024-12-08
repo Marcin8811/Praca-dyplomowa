@@ -1,5 +1,9 @@
+import logging
 import requests
 from utils.http_methods import Http_methods
+
+# Ustawenia logirowania
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 base_url = "https://rahulshettyacademy.com"  # Bazowy URL
 key = '?key=qaclick123'  # Parametr dla wszystkich zapytań
@@ -30,10 +34,10 @@ class Google_maps_api:
 
         post_resource = "/maps/api/place/add/json"  # Zadanie dla zasobu metoda POST
         post_url = base_url + post_resource + key
-        print(f"POST URL: {post_url}")  # Логирование URL
+        logging.info(f"POST URL: {post_url}")  # Logowanie URL
 
         result_post = Http_methods.post(post_url, json_for_create_new_place)
-        print(f"Odpowiedz na POST: {result_post.text}")     # Logirowanie tekstu odpowiedzi
+        logging.info(f"Odpowiedz na POST: {result_post.text}")  # Logowanie tekstu odpowiedzi
 
         return result_post
 
@@ -42,48 +46,48 @@ class Google_maps_api:
         """Metoda dla otrzymanie informacji o miejscu"""
         get_resource = "/maps/api/place/get/json"
         get_url = f"{base_url}{get_resource}{key}&place_id={place_id}"
-        print(f"GET URL: {get_url}")  # Logirowanie URL zapytania
+        logging.info(f"GET URL: {get_url}")  # Logowanie URL zapytania
 
         # Robimy GET zapytanie
         result_get = requests.get(get_url)
 
         if result_get.status_code == 200:
-            print(f"Ответ от GET API: {result_get.text}")  # Logirowanie ciała odpowiedzi
+            logging.info(f"Odpowiedź od GET API: {result_get.text}")  # Logowanie ciała odpowiedzi
         else:
-            print(f"Ошибка при запросе GET: {result_get.status_code} - {result_get.text}")
+            logging.error(f"Błąd podczas zapytania GET: {result_get.status_code} - {result_get.text}")
 
         return result_get
 
     @staticmethod
     def put_new_place(place_id):
-        """Metoda dla aktulizacji info o miejscu Метод"""
+        """Metoda dla aktualizacji informacji o miejscu"""
         put_resource = "/maps/api/place/update/json"
         put_url = base_url + put_resource + key  # Robimy URL dla PUT zapytania
-        print(f"PUT URL: {put_url}")  # Logirowanie URL zapytania
+        logging.info(f"PUT URL: {put_url}")  # Logowanie URL zapytania
 
         json_for_update_new_location = {
             "place_id": place_id,
-            "address": "100 Lenina street, RU",  # Nowy adress dla aktualizacji
+            "address": "100 Lenina street, RU",  # Nowy adres dla aktualizacji
             "key": "qaclick123"
         }
 
         result_put = Http_methods.put(put_url, json_for_update_new_location)  # Robimy PUT zapytanie
-        print(f"Ответ на PUT: {result_put.text}")  # Logirownia odpowiedzi od serwera
+        logging.info(f"Odpowiedź na PUT: {result_put.text}")  # Logowanie odpowiedzi od serwera
 
         return result_put
 
     @staticmethod
     def delete_new_place(place_id):
-        """Метод для удаления места"""
-        delete_resource = "/maps/api/place/delete/json"  # Żródło DELETE zapytania
+        """Metoda dla usunięcia miejsca"""
+        delete_resource = "/maps/api/place/delete/json"  # Źródło DELETE zapytania
         delete_url = base_url + delete_resource + key  # Robimy URL dla DELETE zapytania
-        print(f"DELETE URL: {delete_url}")  # Logirowanie URL zapytania
+        logging.info(f"DELETE URL: {delete_url}")  # Logowanie URL zapytania
 
         json_for_delete_new_location = {
             "place_id": place_id
         }
 
-        result_delete = Http_methods.delete(delete_url, json_for_delete_new_location)  # Robimy DELETE zapytnie
-        print(f"Ответ на DELETE: {result_delete.text}")  # Logirowanie odpowiedzi od serwera
+        result_delete = Http_methods.delete(delete_url, json_for_delete_new_location)  # Robimy DELETE zapytanie
+        logging.info(f"Odpowiedź na DELETE: {result_delete.text}")  # Logowanie odpowiedzi od serwera
 
         return result_delete
